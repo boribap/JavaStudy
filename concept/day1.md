@@ -47,6 +47,7 @@ UML은 대표적인 모델링 언어. 요구 분석, 시스템 설계, 시스템
 |-id:String     
  -name:String    
  -numOfStudents:Integer=0|
+|---|
 |+addStudent()    
  +deleteStudent()|
 
