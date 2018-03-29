@@ -1,4 +1,3 @@
-# blockchain
-study for blockchain
+# Java Study
 
-ethereum project
+객체지향에 대한 공부
