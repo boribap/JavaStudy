@@ -41,15 +41,8 @@ UML은 대표적인 모델링 언어. 요구 분석, 시스템 설계, 시스템
 | protected  | #  | 이 클래스와 동일 패키지에 있거나 상속 관계에 있는 하위 클래스의 객체들만 접근 가능  |
 | package  | ~  | 동일 패키지에 있는 클래스의 객체들만 접근 가능  |    
 
-> 문제 1. 다음 클래스를 코드로 작성해보기     
-
-|Course|
-|---|
-|-id:String     
- -name:String    
- -numOfStudents:Integer=0|
-|+addStudent()    
- +deleteStudent()|
+> 문제 1. 다음 클래스를 코드로 작성해보기    
+![문제1](https://user-images.githubusercontent.com/28684368/38104421-0917440a-33c4-11e8-8b5c-e52213557fd5.png)
 
 * 관계    
 
