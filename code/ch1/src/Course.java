@@ -1,4 +1,4 @@
-/*문제1*/
+/*문제 1*/
 public class Course {
     private String id;
     private String name;
