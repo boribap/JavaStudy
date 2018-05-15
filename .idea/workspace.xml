@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b750af69-8d30-439f-822b-dc18f1fc19b7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/base01/Fruit/src/FruitMain2.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/ch1/ch7.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/ch7/ch7.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/ch7/src/Fruit2.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/code/base01/.idea/workspace.xml" afterPath="$PROJECT_DIR$/code/base01/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/code/ch6/.idea/workspace.xml" afterPath="$PROJECT_DIR$/code/ch6/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/concept/base01.md" afterPath="$PROJECT_DIR$/concept/base01.md" />
-    </list>
+    <list default="true" id="b750af69-8d30-439f-822b-dc18f1fc19b7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -417,12 +407,12 @@
       <workItem from="1523454076272" duration="67000" />
       <workItem from="1523497346305" duration="2364000" />
       <workItem from="1524041717290" duration="137000" />
-      <workItem from="1526374627623" duration="732000" />
+      <workItem from="1526374627623" duration="770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34404000" />
+    <option name="totallyTimeSpent" value="34442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="199" y="21" width="1134" height="1000" extended-state="0" />
