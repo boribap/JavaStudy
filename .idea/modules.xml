@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/code/ch1/ch1.iml" filepath="$PROJECT_DIR$/code/ch1/ch1.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/ch2/ch2.iml" filepath="$PROJECT_DIR$/code/ch2/ch2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code/ch1/ch7.iml" filepath="$PROJECT_DIR$/code/ch1/ch7.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/day1.OOP modeling.iml" filepath="$PROJECT_DIR$/code/day1.OOP modeling.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/day2. OOP concept.iml" filepath="$PROJECT_DIR$/code/day2. OOP concept.iml" />
     </modules>
