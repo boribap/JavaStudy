@@ -52,3 +52,5 @@ class FruitMain
         buyer.showBuyResult();
     }
 }
+
+// 클래스 나누는 것을 잘못해서 에러가 생김
