@@ -50,23 +50,26 @@ class FruitBuyerConstruct
     }
 }
 
-public class Fruit3
+public class Fruit4
 {
     public static void main(String args[])
     {
         FruitSellerConstruct seller1 = new FruitSellerConstruct(0,30,1500);
-        FruitSellerConstruct seller2 = new FruitSellerConstruct(0,20,1000);
-
         FruitBuyerConstruct buyer1 = new FruitBuyerConstruct(10000);
-        buyer1.buyApple(seller1, 4500);
-        buyer1.buyApple(seller2, 2000);
+
+        // 돈 500원 내고 20개 가져가는것
+        seller1.myMoney += 500;
+        buyer1.myMoney -= 500;
+
+        //여기서 numOfApple 이 private이라면 구매자가 과일을 얻을 수 있는 방법은 오직 buyApple(seller1, 4500); 방법 뿐이다.
+        seller1.numOfApple -=20;
+        buyer1.numOfApple +=20;
 
         System.out.println("과일 판매자1의 현재 상황");
         seller1.showSaleResult();
-        System.out.println("과일 판매자2의 현재 상황");
-        seller2.showSaleResult();
 
         System.out.println("과일 구매자1의 현재 상황");
         buyer1.showBuyResult();
     }
 }
+
