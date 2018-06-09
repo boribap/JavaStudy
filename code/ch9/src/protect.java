@@ -8,7 +8,7 @@ class BBB extends AAA
 {
     public void init(int n)
     {
-        num = n;
+        //num = n;
         num1 = n;
     }
 }
