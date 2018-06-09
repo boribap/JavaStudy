@@ -45,8 +45,8 @@
         <entry file="file://$PROJECT_DIR$/../../concept/base01.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="578">
-                <caret line="335" column="1" lean-forward="true" selection-start-line="335" selection-start-column="1" selection-end-line="335" selection-end-column="1" />
+              <first_editor relative-caret-position="606">
+                <caret line="336" column="1" lean-forward="false" selection-start-line="336" selection-start-column="1" selection-end-line="336" selection-end-column="1" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -85,7 +85,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-2" />
     <option name="y" value="9" />
     <option name="width" value="1268" />
@@ -332,15 +332,15 @@
       <workItem from="1527068574951" duration="77000" />
       <workItem from="1527327175594" duration="626000" />
       <workItem from="1527689946893" duration="139000" />
-      <workItem from="1528458095711" duration="3166000" />
+      <workItem from="1528458095711" duration="3192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9405000" />
+    <option name="totallyTimeSpent" value="9431000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="9" width="1268" height="1000" extended-state="1" />
+    <frame x="-2" y="9" width="1268" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -659,8 +659,8 @@
     <entry file="file://$PROJECT_DIR$/../../concept/base01.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="578">
-            <caret line="335" column="1" lean-forward="true" selection-start-line="335" selection-start-column="1" selection-end-line="335" selection-end-column="1" />
+          <first_editor relative-caret-position="606">
+            <caret line="336" column="1" lean-forward="false" selection-start-line="336" selection-start-column="1" selection-end-line="336" selection-end-column="1" />
             <folding />
           </first_editor>
           <second_editor />
