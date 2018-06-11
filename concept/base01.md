@@ -435,3 +435,92 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
     }
     --> 가능 
     
+ # 자바 기본 공부 11
+ ## 메소드 오버로딩과 String 클래스 
+ 
+ ### 메소드 오버로딩 
+ - 매개변수의 형(type)이 다르거나 개수가 다르거나 
+ - 반환형이 다른 것은 메소드 오버로딩이 성립되지 않음 
+    ex) int isYour(int n){}  && boolean isYour(int n){} 
+ - 자바의 생성자는 오버로딩을 지원한다. --> 생성자의 오버로딩으로 인해 하나의 클래스를 기반으로 다양한 형태의 인스턴스 생성이 가능해진다. 
+ - 오버로딩 된 메소드는 대부분의 경우 상당히 유사하게 정의된다. 
+    따라서 오버로딩 과정에서 중복되는 코드의 삽입이 부담스러움 
+    그러나 메소드 내에서는 오버로딩된 다른 메소드의 호출이 가능하기 때문에, 이런 코드 중복문제 쉽게 해결 
+ - 오버로딩된 생성자를 생각해보자 
+    생성자의 경우, 인스턴스의 생성과정에서만자동으로 호출될 뿐 그 이외의 영역에서는 명시적으로 호출할 수 있는 대상이 아님. 
+    그래서, 생성자에 한해서 (only 생성자) 오버로딩 된 다른 생성자의 호출을 허용한다. --> this 라는 키워드 이용 (예제 확인)
+        * this 의 사용 형태 3가지 
+            1) 클래스의 속성과 생성자/메소드의 매개변수의 이름이 같은경우 (클래스 속성을 사용할때 this 키워드를 붙여줌)
+            2) 클래스에 오버로딩된 다른 생성자 호출 
+            3) 객체 자신의 참조값을 전달하고 싶을 때 
+            
+            // class SimpleAdder 안의 메소드
+            public SimpleAdder add(int num)
+            {
+                this.num += num;
+                //자기 자신을 참조할 수 있는 참조 값이 반환
+                return this;
+            } 
+            --> 이 메소드의 반환형이 SimpleAdder. 
+ 
+ ### String 클래스 
+ - 자바는 문자열도 인스턴스로 처리하기 위해서 String이라는 이름의 클래스를 정의하고 있음. 
+ - 지금까지의 인스턴스는 new를 이용하여 생성했지만, String의 인스턴스는 큰따옴표만으로 생성 가능. 
+    ex) String str = "String instance";
+    ex) System.out.println("Hello world") --> 여기서도 String인스턴스가 생성되어 메소드의 인자로 전달되는 것이다. 
+                                              println 메소드의 매개변수형이 String인것. 
+ - str.length() --> length라는 메소드를 호출함 --> str이 인스턴스임을 증명하는 증거. 
+   "해해해".length(); == (new AAA()).bbb(); 
+ - String 클래스의 인스턴스는 상수의 성격을 지니다. --> String의 인스턴스에 저장된 문자열데이터의 변경이 불가능하기 때문.
+ - String인스턴스는 배열을 기반으로 큰 타옴표로 명시된 문자열 데이터를 저장하게 된다. 
+ - 자바는 인스턴스 생성의 수를 줄이기 위해서 동일한 문자열 데이터로 구성되는 String 인스턴스의 생성을 하나로 제한한다. 
+    그리고 이를 통한 문제의 발생을 막기 위해서 String 인스턴스의 데이터 변경은 허용하지 않고 있다. 
+ 
+ ### API Document의 참조를 통한 String 클래스의 인스턴스 메소드 관찰 
+ - 메소드들에 대해 반드시 API문서상에서 다시 한번 확인하는 습관을 들려라. (java.sun.com)
+ - 문자열 복사 )
+    String str1 = "LEMON";
+    String str2 = "LEMON";
+    String Str3 = new String(Str2)
+    --> str1 & str2 는 같은 인스턴스를 참조한다. 
+    --> 별도의 인스턴스에 저장하기 위해 3번째줄과 같이 해줌 , str2와 str3은 다른 인스턴스를 참조한다(같은 문자열임에도 불구하고)
+ - 문자열의 + 연산 
+    - String str4 = "Lemon" + 'A' --> String.ValueOf('A')  (매개변수를 문자열로 만들어주는 메소드) 가 호출된다. 그리고 문자열2개를 결합하는 concat() 메소드가 호출되는것.
+    - + 연산이 많으면 그 개수만큼 인스턴스가 만들어진다? No. 그렇게 되면 너무 부담 커짐 --> 자바 컴파일러는 문자열결합의최적화를 수행해서 아무리 많은 + 연산이더라도 추가적 인스턴스 생성은 2개로 제한된다. 
+    ex) String str5 = 1+"Lemon" + 3;
+        --> String str5 = new StringBuilder().append(1).append("Lemon").append(3).toString();
+        --> new StringBuilder() : 이부분에 의해 인스턴스 하나가 생성됨.
+            그리고 append() 메소드가 호출됨. 
+            new StringBuilder().append(1).append("Lemon").append(2) : 여기까지하면 1Lemon3 을 버퍼에 저장하는 StringBuilder 인스턴스가 완성되는것 
+            우리는 String 인스턴스를 원함 그래서 toString() 로 String 인스턴스 생성. 
+            그래서 총 2개의 인스턴스가 생성되는 것.
+        
+ ### StringBuilder & StringBuffer 클래스 
+ - StringBuilder 와 StringBuffer 는 변경이 가능한 문자열의 표현을 위한 클래스. 
+ - String으로 된 문자열을 변경할 일이 있다면, StringBuilder strb = new StringBuilder(string으로된 문자열) --> 이런식으로 하여 StringBuilder에 복사한 후 변경하면됨.
+ 
+ - StringBuilder
+    - 이것은 문자열의 저장, 변경을 위한 메모리 공간(버퍼)을 내부에 지님.
+    - 주요 메소드 ) append, insert
+        * append (인스턴스 자신의 참조값(this)을 반환함)
+            // class SimpleAdder 안의 메소드
+            public SimpleAdder add(int num)
+            {
+                this.num += num;
+                //자기 자신을 참조할 수 있는 참조 값이 반환
+                return this;
+            } 
+            --> 이 메소드의 반환형이 SimpleAdder.   
+            --> main 메소드에서 
+                SimpleAdder adder = new SimpleAdder();
+                adder.add(1).add(3).add(5).showResult();
+                --> adder.add 메소드의 반환값이 adder이기 때문에 반환되는 참조값을 통한 메소드의 호출이 가능한것이다. 
+    - 이 메모리공간의 크기는 자동조절됨
+        - public StringBuilder() //16개의 문자 저장 버퍼 생성
+        - public StringBuilder(int capacity) // capacity 개의 문자 저장 버퍼 생성 
+    
+        - 버퍼크기 확장하는 작업은 많은 연산이 요구됨. 그래서 가급적이면 필요로하는 버퍼의 크기를 미리 할당하는 것이 성능에 도움됨. 
+ 
+ - StringBuffer
+    - StringBuilder와의 차이점 --> StringBuffer는 쓰레드에 안전하지만, StringBuilder는 쓰레드에 안전하지 못하다. 
+    
