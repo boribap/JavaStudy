@@ -591,7 +591,7 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
         - int [][] arr = new int[3][]; // 새로를 담당하는 배열 생성
         - arr[0] = new int[2]; // 가로를 담당하는 배열 생성 
  
- ### for-each
+ ### for-each (Enhanced for 라고 부르기도 함)
  - for (int i = 0; i < arr.length; i++)
     System.out.println(arr[i] + "");
  - for (int e : arr)
