@@ -606,3 +606,26 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  - for-each문은 값의 참조만 가능하고 값의 변경은 불가능하다. --> X
     for-each문은 배열에 저장되어 있는 참조 값의 변경이 불가능하다. (인스턴스 배열은 인스턴스로 이뤄진 배열이 아닌 인스턴스의 참조변수로 이루어진 배열이기 때문.) --> 이게 더 정확한 말 
  
+ ### main 메소드로의 데이터 전달
+ - main 의 매개변수 선언 : String [] args --> String 인스턴스 배열의 참조값을 전달받기 위한 매개변수 선언
+ 
+ ### main 으로의 데이터 전달방법
+ class MainProgram
+ {
+    public static void main(string[] args)
+    {
+        for(String e : args)
+            System.out.println(e);
+    }
+ }
+    --> 그냥 실행시키면 아무것도 출력되지 않음
+    --> java MainPrigram AAA BBB CCC
+        AAA
+        BBB
+        CCC  가 출력된다. (문자열이 공백으로 구분됨은 알수 있음)
+        String[] strArr = {'AAA', 'BBB','CCC'} 인 배열이 만들어지고 이것이 매개변수 String[] args 에 인자로 전달되는것이다. 
+ 
+ # 자바 기본 공부 14 
+ ## 클래스의 상속 1 : 상속의 기본 
+ 
+ ### 
