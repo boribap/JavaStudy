@@ -793,3 +793,16 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  - final 메소드 
     - 메소드가 final로 선언되면, '이 메소드의 오버라이딩을 허용하지 않겠다.' 는 의미 
     - 대표적인 메소드는 Object클래스의 wait, notify, notifyall 메소드가 있다. 
+      
+ # 자바 기본 공부 17
+ ## abstract와 interface 그리고 inner class 
+ 
+ ### abstract 클래스 
+ - 예제에서 실행한 Friend 클래스의 인스턴스는 생성하면 안되는, 상속의 관계를 형성하기 위한 클래스 였음 
+ - 하지만 실수로 인스턴스를 생성하더라고 컴파일 오류 없음 
+ - 오류를 발생하게 하도록 하는 것이 abstract class 이다
+ 
+ ### interface 
+ ### Inner 클래스 
+ ### Local 클래스와 Anonymous 클래스 
+ 
