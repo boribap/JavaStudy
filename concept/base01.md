@@ -801,8 +801,55 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  - 예제에서 실행한 Friend 클래스의 인스턴스는 생성하면 안되는, 상속의 관계를 형성하기 위한 클래스 였음 
  - 하지만 실수로 인스턴스를 생성하더라고 컴파일 오류 없음 
  - 오류를 발생하게 하도록 하는 것이 abstract class 이다
+ - abstract 클래스는 완전하지 않는 클래스를 의미함
  
+ - ch16의 예시를 보면 Friend는 인스턴스를 생성하면 안되는 클래스이미로 abstract로 선언해주면 더 좋다. 
+ - 그 안의 showBasicInfo() 메소드도 안은 비어있어 완전하지 않다. --> 추상메소드 (abstract 메소드)라고 한다. 명시적으로 나타내기 위해 abstract키워드를 붙인다. 
+ - abstract 메소드가 정의되어 있는 클래스는 인스턴스 생성이 불가능하기 때문에 이때는 반드시 클래스에 abstract 키워드가 필요하다. 
+ - abstract 클래스를 상속하는 하위 클래스에서 반드시 해야할일 
+    abstract class AAA{
+        void methodOne(){}
+        abstract methodTwo();
+    }
+    
+    class BBB extends AAA{
+        void methodTwo(){}
+    }
+    
+    --> 컴파일 오류생김 
+        BBB클래스는 AAA클래스를 상속하고 있는데, BBB클래스에서 methodTwo 메소드를 오버라이딩하지 않고 있다. 
+        그래서 abstract 상태의 methodTwo 메소드가 그대로 상속된다. 
+        즉, BBB클래스는 상속으로 인해 abstract 메소드를 멤버로 포함한 꼴인것. 
+        따라서, BBB도 absract로 선언하던지, methodTwo메소드를 오버라이딩해주어야 컴파일 가능 
+        
  ### interface 
+ 문제)
+ - 이름과 주민등록번호를 저장하는 기능의 클래스가 필요하다. 
+ - 이 클래스에는 주민등록 번호를 기반으로 사람의 이름을 찾는 기능이 포함되어야한다.
+ - 주민등록번호와 이름의 저장 -> void addPersonalInfo(String name, String perNum)
+ - 주민등록번호를 이용한 검색 -> String searchName(String perNum)
+ --> 위와 같이 의뢰하면 원하는 결과가 안나올수도 있다. 그래서 클래스를 하나 정의해서 이 클래스를 상속해서 기능을 완성시켜 달라고 요구한다. 
+    abstract class PersonalNumberStorage{
+        public abstract void addPersonalInfo(String name, String perNum);
+        public abstract String searchName(String perNum);
+    }
+    - 위 클래스를 기반으로 main 프로그램을 작성하면 main 프로그램 안의 모든 메소드 호출이 PersonalNumberStorage 클래스 기반으로 진행되고 있다. 
+    - PersonalNumberStorage 클래스는 의뢰한 결과물과 main 사이의 교량 역할을 한다고 볼수있다. 
+ 
+ - 위에서 정의한 클래스는 abstract 메소드로만 이루어져 있는데, 이러한 경우에는 interface 의 정의로 abstract 클래스의 정의를 대체할 수 있다. 
+    interface class PersonalNumberStorage{
+          public void addPersonalInfo(String name, String perNum);
+          public String searchName(String perNum);
+    }
+ 
+ - 인터페이스가 가지는 특징 
+    - 인터페이스 내에 존재하는 변수는 무조건 public static final로 선언한다. 
+    - 인터페이스 내에 존재하는 메소드는 무조건 public abstract로 선언된다. 
+    + 인터페이스 역시 참조변수의 선언도 가능하고 특히, 메소드의 오버라이딩도 그대로 적용된다
+    - 메소드를 오버라이딩 하는 과정에서 접근의 허용범위를 좁히는 방식으로는 접근제어 지시자를 변경할 수 없다. / 허용범위를 넓히는 방식으로만 변경이 가능함
+    - 
+    
+ 
  ### Inner 클래스 
  ### Local 클래스와 Anonymous 클래스 
  
