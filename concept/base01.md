@@ -952,7 +952,7 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
     - try 영역에서 예외상황이 발생한 문장의 나머지 부분을 건너뛰기 때문에 try 영역의 구성 범위도 적절해야한다. 
     - 참조변수 e를 통해서 getMessage 메소드(모든 예외 클래스들이 상속하는 Throwable 클래스에 정의되어 있다)를 호출할 수도 있음 
     
- - 예외상황을 알라는 클래스 몇가지 
+ - 예외상황을 알라는 클래스 몇가지 (모두 RuntimeException을 상속하는 하위 클래스들)
     - 배열의 접근에 잘못된 인덱스 값을 사용하는 예외상황 
         --> 예외클래스 : ArrayIndexOutBoundsException
     - 허용할 수 없는 형변환 연산을 진행하는 예외상황 
@@ -979,7 +979,7 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  - Exception 클래스의 생성자 호출을 통해서 전달된 문자열이 getMessage의 호출을 통해서 반환된다.
     - 그래서 예외클래스를 정의할 때, 해당 예외상황의 설명에 필요한 문자열을 Exception 클래스의 생성자에 전달하면 된다. 
  - Throwable 클래스를 상속하지 않고 Exception 클래스를 상속받는 이유 
-    - 후에 배움 
+    - 예외 클래스의 계층도 에서 배움
  - throw excpt;
     --> 예외상황이 발생했음을 알리는 문장 
     --> 이 문장에서 예외상황이 발생했다는 것이 아니라, 예외의 상황은 다른 영역에서 발생하고, 이 문장에서는 throw문을 통해 예외가 발생했음을 알리기만 하는 것 .
@@ -1000,6 +1000,48 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
     - 이것과 비슷한 출력을 Throwable 클래스에 정의되어 있는 PrintStackTrace 메소드를 이용해 확인할 수 있다. 
     
  ### 예외 클래스의 계층도 
+ - Throwable을 상속하는 예외클래스는 Exception과 Error이다. 
  
+ - Error 클래스
+    - Error는 단순한 예외라고 하기에는 심각한 오류의 상황을 표현하기 위해 정의된 클래스 --> Error를 상속하는 클래스의 오류상황이 발생하면, 그냥 프로그램이 종료되도록 놔두는 것이 상책
+    - Error를 상속하는 대표적인 클래스 : VirtualMachineError
+    
+ - Exception 클래스 
+    - Exception은 모든 예외 클래스의 상위클래스이다. 
+    - Exception을 상속하는 클래스의 예외상황이 임의의 메소드 내에서 발생 가능하다면, 해당 메소드는 반드시 아래 두가지 중 한개를 해줘야함
+        1) try ~catch문을 이용해서 메소드 내에서 예외를 처리하도록 정의
+        2) throws를 이용해 메소드를 호출한 영역으로 예외가 전달되도록 정의 
+        
+ - clone 사용해보기 
+    - Object 클래스의 clone 메소드 
+    - 이 것은 throws CloneNotSupportedException 하다고 API문서에 적혀있다. 
+    그래서 
+    1) 
+    public void simple(int n)
+    {
+        mycalss my = new myclass();
+        try{
+            my.clone();
+         } catch (CloneNotSupportedException e) {...}
+    }
+    2) 
+    public void simple(int n) throws CloneNotSupportedException
+    {
+           mycalss my = new myclass();
+           my.clone();
+    }
+    - 앞으로는 메소드의 호출문을 구성할 때, API문서를 참조해 해당 메소드가 예외를 전달하는지 확인하고, 작성해야한다. 
+    
+ - 처리하지 않아도 되는 RuntimeException의 하위 클래스 
+    - 성격이 Error 클래스와 비슷
+    - but, RuntimeException 을 상속하는 예외 클래스는 Error를 상속하는 예외 클래스처럼 치명적인 상황을 표현하지 않음
+            따라서 예외발생 이후에도 프로그램의 실행을 이어나가기 위해서 try~catch문으로 해당 예외를 처리하기도 함 
+                (예외의 성격이 보여주듯 특별한 경우가 아니면 이들에 대해서 try~catch문을 이용해 예외처리 하지 않음)
+    - ex) NegativeArraySizeException, nullPointerException...
  
+ # 자바 기본 공부 19
+ ## 자바의 메모리 모델과 Object 클래스 
+ 
+ ### 자바 가상머신의 메모리 모델
+ ### Object 클래스 
  
