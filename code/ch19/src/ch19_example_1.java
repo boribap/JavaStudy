@@ -71,7 +71,5 @@ public class ch19_example_1
         rec1.showPosition();
         rec2.showPosition();
         rec3.showPosition();
-
-
     }
 }
