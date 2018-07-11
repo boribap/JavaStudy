@@ -1118,3 +1118,23 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  ### Wrapper 클래스
  ### BigInteger 클래스와 BigDecimal 클래스
  ### Math 클래스와 난수의 생성, 그리고 문자열 토큰의 구분    
+ 
+ # 자바 기본 공부 25
+ ## Swing 컴포넌트와 이벤트 헨들링
+ 
+ ### Swing을 시작하기에 앞서
+ - Swing은 GUI를 만드는데 사용되는 자바 패키지 이름이다. 
+ 
+ ### Swing 컴포넌트와 이벤트 핸들링
+ - JFrame은 java.awt.Container 를 상속한다. 
+    - java.awt.Container 클래스를 상속하는 모든 클래스는 "다른 Swing 컴포넌트를, 그리고 AWT 컴포넌트를 얹을 수 있다"는 특징을 가지게 된다. 
+    - JButton과 같은 다른 Swing 컴포넌트를 위에 얹을 수 있는 컨테이너 역할을 하는 컴포넌트이다. 
+ - 그래서 JButton 인스턴스를 add 메소드의 호출을 통해 JFrame의 위에 얹을 수 있는 것이다. 
+ - 버튼을 눌렀을때와 같은 이벤트 처리를 위한 'Event Listener' 
+ - MouseEvent의 인스턴스에는 발생한 이벤트와 관련된 정보가 담겨있다. 
+    - 이벤트가 발생한 위치정보 : getX, getY 정보 
+    - 이벤트가 발생한 인스턴스의 참조 값 :  getComponent 메소드 
+    - 이벤트를 발생시킨 마우스 버튼의 종류 : getButton 메소드
+ 
+ ### 레이아웃 매니저 (Layout Manager)
+ - 
