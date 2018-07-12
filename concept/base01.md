@@ -1137,4 +1137,35 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
     - 이벤트를 발생시킨 마우스 버튼의 종류 : getButton 메소드
  
  ### 레이아웃 매니저 (Layout Manager)
- - 
+ - FlowLayout
+ - BorderLayout
+ - GridLayout
+ 
+ - 두개 이상의 레이아웃을 넣고 싶을 때는 JPanel을 사용한다. 
+    - JFrame에 넣고 싶은 레이아웃개수만큼 JPanel을 만들고 JPanel을 JFrame에 add해주면 된다. 
+ 
+ ### 이벤트와 이벤트 리스너 
+ - MouseEvent : MouseListener : MouseAdapter :마우스 관련 이벤트 
+ - MouseEvent : MouseMotionListener : MouseMotionAdapter : 마우스 움직임 관련 이벤트 
+ - TextEvent : TextListener : 없음(구현해야할 메소드가 한개인 인터페이스이므로) : 텍스트 관련 컴포넌트의 문자 편집 이벤트 
+ - ItemEvent : ItemListener : 없음 : 선택 관련 이벤트 
+ - AdjustmentEvent : AdjustmentListener : 없음 : 스크롤바 이벤트 
+ - WindowEvent : WindowListener : WindowAdapter : GUI 프레임 창 관련 이벤트 
+ - ActionEvent : ActionListener : 없음 : 컴포넌트 별 특정 행위 관련 이벤트 
+ 
+ - ActionEvent 중 한개는 JButtondl 눌렸을때 가 있다. 이것은 버튼을 마우스로 클릭했을 때와는 다른것이다. 
+    - JButton을 누르는 방법은 매우 여러개가 있기 때문이다. 
+ 
+ - MouseListener 인터페이스와 마찬가지로 구현해야할 메소드가 둘 이상인 이벤트 처리 관련 인터페이스에 대해서는 해당 인터페이스를 구현하는 클래스가 제공된다 --> 어댑터 클래스 
+ 
+ ### 다양한 Swing 컴포넌트 
+ - JLabel : 문자열 정보를 출력하기 위한 컴포넌트
+ - JTextField : 한줄의 문자열 입력을 위한 컴포넌트 
+ - JTextArea : 여러줄의 문자열 입력을 위한 컴포넌트 
+ - JScrollPane : 스크롤 바 
+ - JCheckBox : 체크박스 
+ - JRadioButton : 라디오 버튼 
+ - Border : JPanel 컴포넌트의 경계표시를 돕는 클래스 
+ - JComboBox : 펼쳐지는 선택목록에서 하나를 선택하는 경우에 사용되는 컴포넌트 
+ - Look And Feel : GUI창의 다른 느낌을 주는 것 
+ 
