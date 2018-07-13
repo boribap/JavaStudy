@@ -1116,8 +1116,32 @@ __다른 프로그램들__ 은 운영체제가 직접 실행시키는 구조이�
  ## 자바의 다양한 기본 클래스
  
  ### Wrapper 클래스
- - 
+ - 기본 자료형의 데이터를 감싸는 Wrapper 클래스
+ - 기본 자료형 데이터들을 인스턴스로 표현해야할 때 사용한다. 
+ - 자바에서는 기본 자료형 데이터를 인스턴스로 감싸기 위한 클래스들을 이미 정의해 놓았다. 
+    Boolean : Boolean(boolean value)
+    Character : Character(char value)
+    Byte : Byte(byte value)
+    Short : Short(short value)
+    Integer : Integer(int value)
+    Long : Long(long value)
+    Float : Float(float value), Float(double value)
+    Double : Double(double value)
+    
+    --> Character 클래스을 제외한 모든 Wrapper 클래스에는 String의 참조값을 인자로 받는 생성자들이 정의되어 있어서 문자열로 표현된 데이터를 기반으로하는 인스턴스 생성도 가능하다. 
+ 
+ - Boxing & Unboxing 
+    - 기본 자료형 데이터를 인스턴스화 시키는 작업 , 인스턴스의 생성에 의해서 이뤄진다. 
+    - 인스턴스에 저장되어 있는 기본 자료형 데이터를 꺼내는 작업, Wrapper 클래스에 정의된 메소드의 호출에 의해서 이뤄진다. 
+    
+ - Wrapper 클래스는 산술연산을 위해서 정의된 클래스가 아니다. 
+    - Wrapper 클래스의 인스턴스에 저장된 값은 변경이 불가능하다. 
+    - 변경된 값을 저장하는 새로운 인스턴스의 생성 및 참조만 가능하다. 
+    - but, 자동박싱, 자동언박싱이 가능해지면서 산술연산이 가능해졌다. 
+ 
  ### BigInteger 클래스와 BigDecimal 클래스
+ - 
+ 
  ### Math 클래스와 난수의 생성, 그리고 문자열 토큰의 구분    
  
  # 자바 기본 공부 25
