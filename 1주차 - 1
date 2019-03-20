@@ -1,0 +1,90 @@
+# 1주차
+
+- jdk과 jre의 역할 (폴더 구조)
+- JVM (java virtual machine)
+
+    소스코드(.java) → (javac.exe) → 바이트 코드(.class) → (java.exe) → JVM 구동 
+
+    바이트 코드를 해석하고 실행하기 위해 JVM 사용
+
+    java.exe : main() 메소드를 찾아 실행시킴 
+
+    각 os 별로 JVM이 존재한다(jre,jdk도 os 별로 제공됨)
+
+    jre : JVM을 구현하는 환경 
+
+    jdk : jre + 여러 개발 툴 
+
+    jdk/bin 폴더 안에 실행파일들이 있음 (java.exe, javac.exe, javadoc.exe 등등)
+
+    applet : 작은 어플리케이션 / 웹브라우저를 통해 실행할 수 있는 자바 클래스 (jre필요)
+
+- 변수이름 사이트 [https://www.curioustore.com/#!/](https://www.curioustore.com/#!/)
+
+- 자바 식별자 규칙
+    - 첫 문자가 문자나 '_', '$'의 특수문자로 시작되어야 한다. 숫자로 시작할 수 없다.
+    - 첫 문자가 아니라면, 문자나 '_', '$'의 특수문자 그리고 숫자로 구성될 수 있다.
+    - 자바의 예약어는 식별자로 사용할 수 없다.
+    - 자바의 식별자는 대소문자를 구분한다.
+    - 식별자 길이는 제한이 없고 공백은 포함할 수 없다.
+
+    - 클래스 이름은 대문자의 명사로 시작
+    - 메서드 이름은 소문자의 동사로 시작
+    - 변수는 소문자의 명사
+    - 상수는 대문자의 명사
+
+    - 보통 카멜케이스 구문을 따른다 (2가지 단어가 혼합된다면 두번째 단어는 대문자로 시작)
+
+- 자바의 역사
+
+    sun 엔지니어의 `그린(green)` 이라는 팀으로 부터 시작됨 → 가전제품의 임베디드 시스템 같은 작은 목적으로 설계됨 (처음에는 그린톡 이라고 불렸고-확장자 .gt / 이후에 oak 라는 언어로 불리게 됨)
+
+    oak라는 이름 상표등록되어 있어 java로 이름 바꿈 및 발표 (1995)
+
+    초기에는 윈도우 프로그램 개발이 주류 → 그러나 c++ 에 비해 메모리, cpu 지나치게 많이 사용 → 윈도우 프로그래밍 언어로 부적합했음 
+
+    인터넷이 활성화되면서 웹 애플리케이션 구축용 언어로 급부상 
+
+    (다양한 서버 운영체제에서 단한번의 작성으로 모든곳에서 실행 가능한 언어가 자바뿐이었기 때문 - JRE가 설치되어있는 모든 os에서 실행가능하기 때문)
+
+- 자바 버전에 대해
+
+    [https://www.whatap.io/blog/12/](https://www.whatap.io/blog/12/) 
+
+- 자바 API 도큐먼트
+
+    [https://docs.oracle.com/javase/8/docs/api/](https://docs.oracle.com/javase/8/docs/api/) 
+
+- 유니코드
+
+    // 1
+    public static void main(String[] args) {
+            System.out.println("a\u0022.length() + \u0022b".length());      // 2
+            System.out.println("a\".length() + \"b".length());
+    }
+    
+    
+    // 2
+    \u0070\u0075\u0062\u006c\u0069\u0063\u0020\u0020\u0020\u0020
+            \u0063\u006c\u0061\u0073\u0073\u0020test
+            \u007b\u0070\u0075\u0062\u006c\u0069\u0063\u0020\u0020\u0020
+            \u0020\u0020\u0020\u0020\u0073\u0074\u0061\u0074\u0069\u0063
+            \u0076\u006f\u0069\u0064\u0020\u006d\u0061\u0069\u006e\u0028
+            \u0053\u0074\u0072\u0069\u006e\u0067\u005b\u005d\u0020\u0020
+            \u0020\u0020\u0020\u0020\u0061\u0072\u0067\u0073\u0029\u007b
+            \u0053\u0079\u0073\u0074\u0065\u006d\u002e\u006f\u0075\u0074
+            \u002e\u0070\u0072\u0069\u006e\u0074\u006c\u006e\u0028\u0020
+            \u0022\u0048\u0065\u006c\u006c\u006f\u0020\u0077\u0022\u002b
+            \u0022\u006f\u0072\u006c\u0064\u0022\u0029\u003b\u007d\u007d
+    
+    // 3
+    public static void main(String[] args) {
+            System.out.println((int) (char) (byte) -1 );
+            System.out.println((int) (short) (byte) -1 );
+            int i = 'c';            
+            int j = (short) 'c';    
+            System.out.println(i);
+            System.out.println(j);
+    }
+
+연산
