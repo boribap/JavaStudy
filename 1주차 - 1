@@ -59,8 +59,14 @@
 
     // 1
     public static void main(String[] args) {
-            System.out.println("a\u0022.length() + \u0022b".length());      // 2
+            System.out.println("a\u0022.length() + \u0022b".length()); 
+            // 문자열 a 의 길이와 문자열 b의 길이를 더하라는 의미 
+            // \u0022 가 " 를 나타내기 때문 
+            // 2
             System.out.println("a\".length() + \"b".length());
+            // a".length() + "b 
+            // 위 문자열의 길이를 묻는 것 
+            // "" 안에서 "를 사용하려면 \를 붙여야 하기 때문 
     }
     
     
@@ -81,8 +87,12 @@
     public static void main(String[] args) {
             System.out.println((int) (char) (byte) -1 );
             System.out.println((int) (short) (byte) -1 );
-            int i = 'c';            
+            int i = 'c'; 
+            // 00000000 00000000 00000000 01100011
             int j = (short) 'c';    
+            // 00000000 01100011
             System.out.println(i);
+            // c
             System.out.println(j);
+            // 손실된 데이터 없으므로 c
     }
