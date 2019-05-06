@@ -8,6 +8,7 @@
 - 정적 필드도 private 접근 제한자를 붙여 외부에서 필드값을 변경하지 못하도록 막는다
 - 대신 외부에서 호출할 수 있는 정적 메소드인 getInstance()를 선언하고 정적필드에서 참조하고 있는 자신의 객체를 리턴한다.
 
+'''
 public class test {
 // 정적 필드
 private static test singleton = new test();
@@ -21,6 +22,9 @@ private static test singleton = new test();
     }
 
 }
+''' 
+
+
 --> 외부에서 객체를 얻는 유일한 방법은 getInstance() 메소드를 호출하는 방법
 --> getInstance() 메소드는 단 하나의 객체만 리턴하기 때문에
 test val1 = test.getInstance();
