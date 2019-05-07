@@ -1,0 +1,316 @@
+# 4주차 - 상속
+
+## 상속 개념
+
+- 부모클래스의 멤버를 자식 클래스에게 물려줄 수 있음
+- 코드의 중복 줄임
+- 접근 제한에 따라 자식클래스에서 사용가능한 멤버에 제한이 있음
+
+## 클래스 상속
+
+- 다중 상속 허용 안함
+
+    class 자식클래스 extends 부모클래스 {
+    	//필드
+    	//생성자
+    	//메소드
+    }
+
+## 부모 생성자 호출
+
+![](Untitled-5e08d3c6-0e5b-4427-abe5-074463ecce89.png)
+
+- 부모 생성자의 호출 위치 - 자식 생성자의 맨 첫줄
+
+    자식클래스 ( 매개변수 선언, ...) {
+    	// 부모 클래스 호출 
+    	// 명시하지 않으면 자동으로 생성됨 --> 매개값 없이 생성됨 --> 부모클래스의 기본 생성자가 있어야함
+    	super( 매개값, ...);
+    	...
+    }
+
+## 메소드 재정의
+
+일부 메소드는 자식 클래스에서 다시 수정해야함 
+
+- override
+    - 메소드가 오버라이딩되면 부모 객체의 메소드는 숨겨지기 때문에, 자식 객체에서 메소드를 호출하면 오버라이딩된 자식 메소드가 호출된다.
+    - 부모의 메소드와 동일한 시그니처(리턴타입, 메소드이름, 매개변수리스트)를 가져야함
+    - 접근 제한을 더 강하게 오버라이딩 할수없음 (부모 public —> 자식 private 불가)
+    - 새로운 Exception을 throws 할 수 없다
+- super
+    - 자식 클래스 내부에서 오버라이딩된 부모 클래스의 메소드를 호출해야 할 때 명시적으로 super 키워드를 붙여 부모 메소드를 호출 할 수 있다.
+
+        super.부모메소드();
+
+## final 클래스와 final 메소드
+
+- 상속할 수 없는 final 클래스
+    - 최종적인 class 가 되므로 부모 클래스가 될수없음
+- 오버라이딩할 수 없는 final 메소드
+    - 부모 클래스에 선언된 final 메소드는 자식 클래스에서 재정의할 수 없다.
+
+## protected 접근 제한자
+
+- 필드, 생성자, 메소드 선언에 사용됨
+- 다른 패키지에서는 자식 클래스만 접근을 허용
+    - new 연산자를 이용해 생성자를 직접 호출할 수는 없지만 자식 생성자에서 super()로 A 생성자를 호출할 수 있다.
+
+## 타입 변환과 다형성
+
+클래스 타입의 변환은 상속관계에 있는 클래스 사이에서 발생한다. 
+
+자식타입은 부모타입으로 자동 타입변환이 가능하다. 
+
+- 자동 타입 변환
+    - 프로그램 실행 도중에 자동적으로 타입 변환이 일어나는 것
+
+        부모클래스 변수 = 자식클래스타입;
+        --> 자식클래스의 타입이 자동 타입 변환되어 부모클래스 변수에 들어간다.
+        
+        class Cat extends Animal {
+        	...
+        }
+        
+        Cat cat = new Cat();
+        Animal animal = cat; 
+
+    - 부모 타입으로 자동 타입 변환된 이후에는 부모 클래스에 선언된 필드와 메소드만 접근이 가능하다.  비록 변수는 자식 객체를 참조하지만 변수로 접근 가능한 멤버는 부모 클래스 멤버c로만 한정된다. (예외. 자식 클래스에서 오버라이딩되었다면 자식 클래스의 메소드가 호출됨)
+
+        class Parent {
+        	void method1() {};
+        	void method2() {};
+        }
+        
+        class Child extends Parent {
+        	void method2() {};
+        	void method3() {};
+        }
+        
+        class ChildExample {
+        	public static void main(String[] args) {
+        		Child child = new Child();
+        		
+        		Parent parent = child;
+        
+        		// 부모 클래스의 메소드 호출
+        		parent.method1();
+        		// 오버라이딩 된 것이므로 자식 클래스의 메소드 호출 
+        		parent.method2();
+        		// 호출 불가 
+        		parent.method3();
+        	}
+        }
+
+- 필드의 다형성
+    - 그냥 자식 타입으로 사용하면 될 것을 부모 타입으로 변환해서 사용하는 이유는? → 다형성을 구현하는 기술적 방법 때문
+
+        /* 
+         * [Tire.java]
+        */
+        
+        public class Tire {
+        	//필드 
+        	public int maxRotation;
+        	public int accumulatedRotation;
+        	public String location;
+        
+        	// 생성자 
+        	public Tire(String location, int maxRotation) {
+        		this.location = location;
+        		this.maxRotation = maxRotation;
+        	}
+        
+        	// 메소드
+        	public boolean roll() {
+        		++accumulatedRotation;
+        		if(accumulatedRotation < maxRotation) {
+        			System.out.println(location + "Tire 수명: " + (maxRotation-accumulatedRotation) + "회");
+        			return true;
+        		} else {
+        			System.out.println("*** " + location + "Tire 평크 ***");
+        			return false:
+        		}
+        	}
+        }
+
+    /* 
+     * [Car.java]
+    */
+    
+    public class Car {
+    	// 필드 
+    	Tire frontLeftTire = new Tire("앞왼쪽", 6);
+    	Tire frontRightTire = new Tire("앞오른쪽", 2);
+    	Tire backLeftTire = new Tire("뒤왼쪽", 3);	
+    	Tire backRightTire = new Tire("뒤오른쪽", 4);
+    
+    	// 생성자
+    
+    	// 메소드 
+    	int run() {
+    		System.out.println("[자동차가 달립니다.]");
+    		if(frontLeftTire.roll() == false) { stop(); return 1;};
+    		if(frontRightTire.roll() == false) { stop(); return 2;};
+    		if(backLeftTire.roll() == false) { stop(); return 3;};
+    		if(backRightTire.roll() == false) { stop(); return 4;};
+    		return 0;
+    	}
+    	
+    	int stop() {
+    		System.out.println("[자동차가 멈춥니다.]");
+    	}
+    }
+
+    /* 
+     * [HankookTire.java]
+    */
+    
+    public class HankookTire extends Tire {
+    	// 필드
+    	// 생성자 
+    	public HankookTire(String location, int maxRotation) {
+    		super(location, maxRotation)l
+    	} 
+    
+    	// 메소드 
+    	@override
+    	public boolean roll() {
+    		++accumulatedRotation;
+    		if(accumulatedRotation < maxRotation) {
+    			System.out.println(location + "HankookTire 수명: " + (maxRotation-accumulatedRotation) + "회");
+    			return true;
+    		} else {
+    			System.out.println("*** " + location + "HankookTire 평크 ***");
+    			return false:
+    		}
+    	}
+    }
+
+    /* 
+     * [KumhoTire.java]
+    */
+    
+    public class HankookTire extends Tire {
+    	// 필드
+    	// 생성자 
+    	public KumhoTire(String location, int maxRotation) {
+    		super(location, maxRotation)l
+    	} 
+    
+    	// 메소드 
+    	@override
+    	public boolean roll() {
+    		++accumulatedRotation;
+    		if(accumulatedRotation < maxRotation) {
+    			System.out.println(location + "KumhoTire 수명: " + (maxRotation-accumulatedRotation) + "회");
+    			return true;
+    		} else {
+    			System.out.println("*** " + location + "KumhoTire 평크 ***");
+    			return false:
+    		}
+    	}
+    }
+
+- 실행클래스에서 타이어를 HankookTire나 KumhoTire로 교체해도 Car의 run() 메소드를 수정하지 않고 실행할 수 있다. 교체된 후 run() 메소드에서 roll() 메소드를 호출할 때는 오버라이딩된 메소드가 호출된다
+
+    → 이 처럼 Car의 run() 메소드 수정 없이도 다양한 roll() 메소드의 실행결과를 얻게 되는 것이 필드의 다형성 
+
+- 하나의 배열로 객체 관리
+    - 동일한 타입의 값들은 배열로 관리하는 것이 편리
+
+        class Car{
+        	// 필드 
+        	Tire[] tires = {
+        		new Tire("앞왼쪽" , 6), new Tire("앞오른쪽", 2), ..
+        	}
+        
+        	// 메소드 
+        	int run() {
+        		System.out.println("");
+        			for(int i=0; i<tires.length; i++){
+        				if(tires[i].roll() == false){
+        					stop;
+        					return (i+1);
+        				}
+        			}
+        		return 0;
+        	}
+        
+        	void stop() {
+        	}
+        }
+
+- 매개 변수의 다형성
+    - 메소드를 호출할 때에도 자동타입변환이 발생한다.
+
+        class Driver {
+        	void drive(Vehicle vehicle){
+        		// 자식 객체가 매개값으로 오게 되면 자식 객체가 재정의한 run() 메소드 실행 
+        		vehicle.run();
+        	}
+        }
+        
+        Driver driver = new Driver();
+        Vehicle vehicle = new Vehicle();
+        driver.drive(vehicle);
+        
+        // vehicle의 자식 클래스인 bus 객체를 drive() 메소드의 매개값으로 넘겨주기 
+        Driver driver = new Driver();
+        Bus bus = new Bus();
+        driver.drive(bus);
+
+    - 매개 변수의 타입이 클래스일 경우, 해당 클래스의 객체뿐만 아니라 자식 객체까지도 매개값으로 사용할 수 있다. 매개값으로 어떤 자식객체가 제공되느냐에 따라 메소드의 실행 결과는 다양해질 수 있다. → 매개 변수의 다형성
+
+- 강제 타입 변환 (Casting)
+    - 자식이 부모타입으로 자동 변환한 후, 다시 자식 타입으로 변환할 때 강제 타입 변환을 사용할 수 있음
+
+        자식클래스 변수 = (자식클래스) 부모클래스타입;
+        --> 부모클래스타입 : 자식타입이 부모타입으로 변환된 상태 
+
+- 객체 타입 확인 (instanceof)
+    - 어떤 객체가 어떤 클래스의 인스턴스인지 확인 → instanceof 연산자 사용
+
+        좌항(객체) instanceof 우항(타입)
+        
+        
+        public void method(Parent parent) {
+        	// Parent 매개 변수가 참조하는 객체가 Child 인지 조사
+        	if(parent instanceof Child) {
+        		Child child = (Child) parent;
+        	}
+        }
+
+## 추상 클래스
+
+- 추상 클래스 개념
+    - 객체를 직접 생성할 수 있는 클래스 : 실체 클래스
+    - 이 실체 클래스들의 공통적인 특성을 추출해서 선언한 클래스를 추상 클래스
+    - 추상 클래스 : 부모 클래스 , 실체 클래스 : 자식으로 구현되어 추상클래스의 모든 특성을 물려받고 추가적인 특성을 가질 수 있음
+    - 추상클래스는 new 연산자를 사용해 인스턴스 생성 못함
+
+- 추상 클래스 용도
+    1. 실체 클래스들의 공통된 필드와 메소드의 이름을 통일할 목적 
+    2. 실체 클래스를 작성할 때 시간을 절약 
+
+    - 보통 설계자와 코더는 다른 사람 → 설계자가 코더에게 클래스는 어떤 구조로 작성해야 한다는것을 알려주기 위해 추상클래스로 설계규격을 만드는 것이 좋다
+
+- 추상 클래스 선언
+
+        public abstract class 클래스 {
+        	// 필드
+        	// 생성자
+        	// 메소드
+        }
+
+    - new 를 통해 객체를 만들 수는 없지만 자식 객체가 생성될 때 super()를 호출해 추상 클래스 객체를 생성하므로 추상클래스도 생성자가 있어야 한다.
+
+- 추상 메소드와 오버라이딩
+    - 모든 실체들이 가지고 있는 메소드의 실행 내용이 동일하다면 추상 클래스에 메소드를 작성하는 것이 좋다.
+    - But, 메소드의 선언만 통일화되고, 실행 내용은 실체 클래스마다 달라야 하는 경우 있음 → Animal 추상클래스에서 sound() 메소드 → 추상 메소드 선언을 한다
+    - 추상 메소드
+        - 추상 클래스에서만 선언 가능
+        - 메소드 선언부만 있고 실행내용은 {} 가 없는 메소드
+        - 자식 클래스는 반드시 추상 메서드를 오버라이딩해서 실행내용 작성해야함 → 안하면 컴파일 에러
+
+            [public | protected] abstract 리턴타입 메소드명(매개변수, ...);
