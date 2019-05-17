@@ -22,6 +22,7 @@
         - 배열 정렬 : byte[], char[], double[], int[], Object[], T[] 등
         - 리스트 콜렉션 정렬 : ArrayList, LinkedList, Vector 등
 
+        ``` 
         // x좌표가 증가하는 순, x좌표가 같으면 y좌표가 감소하는 순으로 정렬하라 
         
         class Point implements Comparable<Point> {
@@ -44,6 +45,8 @@
         List<Point> pointList = new ArrayList<>();
         pointList.add(new Point(x,y));
         Collections.sort(pointList);
+        
+        ``` 
 
 ## Interface Comparator
 
@@ -64,7 +67,8 @@
         ex) Arrays.sort(array, myComparator) / Collections.sort(list, myComparator) 
 
         → 두번째 인자로 Comparator interface를 받을 수 있음. 이 경우에는 우선순위큐(Priority queue) 생성자의 두번째 인자로 Comparator interface를 받을 수 있다. → 지정된 Comparator의 정렬방법에 따라 우선순위를 할당한다. 
-
+        
+        ```
         1. Comparator Interface 를 이용한 java 객체를 정렬 
         
         // x좌표가 증가하는 순, x좌표가 같으면 y좌표가 감소하는 순으로 정렬
@@ -88,6 +92,9 @@
         MyComparator myComparator = new MyComparator();
         Collections.sort(pointList, myComparator);
 
+        ``` 
+        
+        ```
         2. Comparator 익명 클래스 이용
         
         Comparator<Point> myComparator = new Comparator<Point>() {
@@ -100,3 +107,5 @@
         List<Point> pointList = new ArrayList<>();
         pointList.add(new Point(x,y));
         Collections.sort(pointList, myComparator);
+        ```
+        
